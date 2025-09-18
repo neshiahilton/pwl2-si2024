@@ -23,6 +23,7 @@
                                 <tr>
                                     <th scope="col">IMAGE</th>
                                     <th scope="col">TITLE</th>
+                                    <th scope="col">SUPPLIER</th>
                                     <th scope="col">CATEGORY</th>
                                     <th scope="col">PRICE</th>
                                     <th scope="col">STOCK</th>
@@ -36,6 +37,7 @@
                                             <img src="{{ asset('/storage/images/'.$product->image) }}" class="rounded" style="width: 150px">
                                         </td>
                                         <td>{{ $product->title }}</td>
+                                        <td>{{ $product->supplier_name }}</td>
                                         <td>{{ $product->product_category_name }}</td>
                                         <td>{{ "Rp " . number_format($product->price,2,',','.') }}</td>
                                         <td>{{ $product->stock }}</td>
@@ -87,3 +89,4 @@
     </script>
 
 </body>
+</html>
