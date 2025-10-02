@@ -34,12 +34,6 @@ class Product extends Model
         return $sql;            
     }
     
-    //public function get_category_product()
-   // {
-    //    $sql = DB::table('category_product')->select('*');
-//
-   //     return $sql;
-   // }
 
     // Tambahkan metode untuk menyimpan data
     public static function storeProduct($request, $image)
@@ -55,5 +49,32 @@ class Product extends Model
             'stock'               => $request->stock
         ]);
     }
+
+    // Tambahkan metode untuk edit data
+    public static function updateProduct($id, $request, $image = null)
+    {
+        $product = self::find($id);
+
+        if ($product) {
+            $data = [
+                'title'                 => $request['title'],
+                'product_category_id'   => $request['product_category_id'],
+                'supplier_id'           => $request['supplier_id'],
+                'description'           => $request['description'],
+                'price'                 => $request['price'],
+                'stock'                 => $request['stock']
+            ];
+
+            if (!empty($image)) {
+                $data['image'] = $image;
+            }
+
+            $product->update($data);
+            return $product;
+        } else {
+            return "tidak ada data yang diupdate";
+        }
+    }
+
 
 }
